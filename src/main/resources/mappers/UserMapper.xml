@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.url.dao.UserDao">    
+	<insert id = "save" parameterType = "User">
+		insert into user (username, nickname, email, password) values(#{username}, #{nickname}, #{email}, #{password})
+	</insert>
+	
+	<select id="selectAllUser" resultType = "User">
+		SELECT id, email, password, nickname, username FROM user;
+	</select>
+	<select id="findByNickname" resultType="User" parameterType= "String">
+        SELECT id, email, password, nickname, username FROM user WHERE nickname = #{nickname};
+    </select>
+	
+	<delete id = "delete" parameterType="String">
+		DELETE FROM user WHERE nickname = #{nickname};
+	</delete>
+	
+</mapper>
+ 

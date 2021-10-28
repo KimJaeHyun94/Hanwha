@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.url.dao.AddressDAO">    
+
+	<select id="selectAllUrl" resultType="Address">
+        SELECT * FROM url;
+    </select>
+	
+    <insert id="insertLongUrl" useGeneratedKeys="true" keyProperty="id" parameterType="String">
+        INSERT INTO url (longurl) VALUE (#{longurl});
+    </insert>
+
+    <select id="getUrlIdByLongUrl" resultType="Integer">
+        SELECT id FROM url WHERE longurl = #{longurl};
+    </select>
+
+    <select id="getLongUrlById" resultType="String" parameterType="int">
+        SELECT longurl FROM url WHERE id = #{id};
+    </select>
+	
+	<delete id = "deleteURL" parameterType="String">
+		DELETE FROM url WHERE longurl = #{longurl};
+	</delete>
+	
+</mapper>
+ 
