@@ -13,4 +13,5 @@ public interface UserDao {
     User findByUid(String uid); // 회원 정보 확인
     User findByNickname(String nickname); // 회원 정보 확인
     List<User> selectAllUser();
+    int updateUser(User user);
 }

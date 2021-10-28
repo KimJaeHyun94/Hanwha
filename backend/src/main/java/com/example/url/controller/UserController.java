@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +38,7 @@ public class UserController {
 		User user = service.findByNickname(nick);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
-
+	
 	@PostMapping("signup")
 	public ResponseEntity<String> insertUser(@RequestBody User user) {
 		String salt = SHA256Util.generateSalt();
@@ -61,5 +62,12 @@ public class UserController {
 		}
 		return new ResponseEntity<>("삭제 실패", HttpStatus.NO_CONTENT);
 	}
-
+	
+	@PutMapping()
+	public ResponseEntity<String> updateUser(@RequestBody User user){
+		if (service.updateUser(user) == 1) {
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
+	}
 }

@@ -9,15 +9,15 @@
         SELECT * FROM url;
     </select>
 	
-    <insert id="insertLongUrl" useGeneratedKeys="true" keyProperty="id" parameterType="String">
+    <insert id="insertLongUrl"  parameterType="String">
         INSERT INTO url (longurl) VALUE (#{longurl});
     </insert>
 
-    <select id="getUrlIdByLongUrl" resultType="Integer">
+    <select id="getUrlIdByLongUrl" parameterType="String" resultType="Integer">
         SELECT id FROM url WHERE longurl = #{longurl};
     </select>
 
-    <select id="getLongUrlById" resultType="String" parameterType="int">
+    <select id="getLongUrlById" resultType="String" parameterType="Integer">
         SELECT longurl FROM url WHERE id = #{id};
     </select>
 	

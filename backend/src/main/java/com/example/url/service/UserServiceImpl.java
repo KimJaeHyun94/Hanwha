@@ -39,4 +39,9 @@ public class UserServiceImpl implements UserService{
 		return dao.selectAllUser();
 	}
 
+	@Override
+	public int updateUser(User user) {
+		return dao.updateUser(user);
+	}
+
 }
